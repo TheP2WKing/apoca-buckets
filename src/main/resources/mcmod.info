@@ -1,0 +1,13 @@
+[
+    {
+        "modid": "apocabuckets",
+        "name": "Apoca Buckets Reloaded",
+        "description": "The apocalypse in a bucket!",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "https://github.com/TheP2WKing/apoca-buckets",
+        "authorList": ["TheP2WKing"],
+        "credits": "Original Author Cryption",
+        "dependencies": []
+    }
+]

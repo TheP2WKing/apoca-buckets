@@ -1,0 +1,42 @@
+# creative tabs
+itemGroup.apocabuckets.name=Apoca Buckets Reloaded
+
+# join message
+join.apocabucketsreloaded.message=Destroying your world made easy!
+
+# fluids
+tile.apocabuckets.hot_water.name=Apoca Buckets
+fluid.apocabuckets.hot_water=Apoca Buckets
+tile.apocabuckets.spring_water.name=Spring Water
+fluid.apocabuckets.spring_water=Spring Water
+tile.apocabuckets.superheated_lava_hw.name=Superheated Lava
+fluid.apocabuckets.superheated_lava_hw=Superheated Lava
+
+# items
+item.apocabuckets.boiled_leather.name=Boiled Leather
+item.apocabuckets.boiled_flesh.name=Boiled Flesh
+item.apocabuckets.boiled_clownfish.name=Boiled Clownfish
+item.apocabuckets.boiled_pufferfish.name=Boiled Pufferfish
+item.apocabuckets.detoxified_spider_eye.name=Detoxified Spider Eye
+
+# damage sources
+death.attack.apocabuckets.hot_water=%1$s boiled to death 
+death.attack.apocabuckets.hot_water.player=%1$s was perfectly steamed whilst trying to escape %2$s
+
+death.attack.apocabuckets.superheated_lava=%1$s melted
+death.attack.apocabuckets.superheated_lava.player=%1$s melted whilst trying to escape %2$s
+
+# jei
+jei.apocabuckets.boiling.category=Boiling
+jei.apocabuckets.boiling.category.info1=Items or blocks must be dropped.
+jei.apocabuckets.spring_water.category=Spring Water
+jei.apocabuckets.spring_water.category.info1=Must be placed on top of each other.
+jei.apocabuckets.spring_water.category.info2=Any kind of stone can be used.
+jei.apocabuckets.spring_water.category.info3=Any kind of hot fluid can be used.
+
+item.apocabuckets.hot_water_bucket.jei1=Will boil you to death if bath in it for too long. Items will not be destroyed when they come in contract with the hot water. Items can be cooked by throwing them into hot water.
+fluid.apocabuckets.hot_water.jei1=Will boil you to death if bath in it for too long. Items will not be destroyed when they come in contract with the hot water. Items can be cooked by throwing them into hot water.
+item.apocabuckets.spring_water_bucket.jei1=Will remove all your status effects. Your health will also slowly regenerate at the cost of your hunger. Can be crafted by placing Apoca Buckets on top of Stone with Lava under it, the Apoca Buckets have a 25 percent chance per tick to change into Spring Water. 
+fluid.apocabuckets.spring_water.jei1=Will remove all your status effects. Your health will also slowly regenerate at the cost of your hunger. Can be crafted by placing Apoca Buckets on top of Stone with Lava under it, the Apoca Buckets have a 25 percent chance per tick to change into Spring Water. 
+item.apocabuckets.superheated_lava_bucket.jei1=Not many have obtained this liquid before. The few who had was found burned with a bottom-less hole next by them.\n\nWarning:\nDeals massive damage to entities and destroys any block that touches it!
+fluid.apocabuckets.superheated_lava.jei1=Not many have obtained this liquid before. The few who had was found burned with a bottom-less hole next by them.\n\nWarning:\nDeals massive damage to entities and destroys any block that touches it!
