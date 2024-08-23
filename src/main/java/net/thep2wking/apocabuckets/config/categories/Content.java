@@ -11,4 +11,7 @@ public class Content {
 
 	@Config.Name("Apocalyptic Bucket Helmet Effects")
 	public boolean APOCALYPTIC_BUCKET_HELMET_EFFECTS = true;
+
+	@Config.Name("Register Forge Buckets For Fluids")
+	public boolean REGISTER_FORGE_BUCKETS_FOR_FLUIDS = false;
 }

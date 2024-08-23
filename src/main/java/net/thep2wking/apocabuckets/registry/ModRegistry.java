@@ -4,12 +4,12 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.thep2wking.oedldoedlcore.util.ModLogger;
 import net.thep2wking.oedldoedlcore.util.ModRegistryHelper;
 import net.thep2wking.apocabuckets.ApocaBuckets;
+import net.thep2wking.apocabuckets.config.ApocaBucketsConfig;
 import net.thep2wking.apocabuckets.init.ModBlocks;
 import net.thep2wking.apocabuckets.init.ModFluids;
 import net.thep2wking.apocabuckets.init.ModItems;
@@ -48,7 +48,7 @@ public class ModRegistry {
 		ModRegistryHelper.registerItemBlock(event, ModItems.GREEN_FIRE);
 
 		ModRegistryHelper.registerItem(event, ModItems.APOCALYPTIC_BUCKET);
-		
+
 		ModRegistryHelper.registerItem(event, ModItems.TSUNAMI_BUCKET);
 		ModRegistryHelper.registerItem(event, ModItems.LAVA_TSUNAMI_BUCKET);
 		ModRegistryHelper.registerItem(event, ModItems.FROZEN_BUCKET);
@@ -64,10 +64,18 @@ public class ModRegistry {
 
 	public static void registerFluids() {
 		ModLogger.registeredFluidsLogger(ApocaBuckets.MODID);
-		FluidRegistry.registerFluid(ModFluids.TSUNAMI);
-		FluidRegistry.registerFluid(ModFluids.LAVA_TSUNAMI);
-		FluidRegistry.registerFluid(ModFluids.FROZEN);
-		FluidRegistry.registerFluid(ModFluids.TOXIC);
-		FluidRegistry.registerFluid(ModFluids.VOID);
+		if (ApocaBucketsConfig.CONTENT.REGISTER_FORGE_BUCKETS_FOR_FLUIDS) {
+			ModRegistryHelper.registerFluid(ModFluids.TSUNAMI);
+			ModRegistryHelper.registerFluid(ModFluids.LAVA_TSUNAMI);
+			ModRegistryHelper.registerFluid(ModFluids.FROZEN);
+			ModRegistryHelper.registerFluid(ModFluids.TOXIC);
+			ModRegistryHelper.registerFluid(ModFluids.VOID);
+		} else {
+			ModRegistryHelper.registerFluidWithoutBucket(ModFluids.TSUNAMI);
+			ModRegistryHelper.registerFluidWithoutBucket(ModFluids.LAVA_TSUNAMI);
+			ModRegistryHelper.registerFluidWithoutBucket(ModFluids.FROZEN);
+			ModRegistryHelper.registerFluidWithoutBucket(ModFluids.TOXIC);
+			ModRegistryHelper.registerFluidWithoutBucket(ModFluids.VOID);
+		}
 	}
 }
