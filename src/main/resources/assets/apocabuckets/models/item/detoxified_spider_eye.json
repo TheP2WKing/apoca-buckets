@@ -1,6 +1,0 @@
-{
-	"parent": "item/generated",
-	"textures": {
-		"layer0": "apocabuckets:items/detoxified_spider_eye"
-	}
-}

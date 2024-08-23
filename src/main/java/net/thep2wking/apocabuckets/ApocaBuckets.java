@@ -2,6 +2,7 @@ package net.thep2wking.apocabuckets;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -17,8 +18,12 @@ import net.thep2wking.oedldoedlcore.util.ModLogInUtil;
 import net.thep2wking.oedldoedlcore.util.ModLogger;
 import net.thep2wking.oedldoedlcore.util.ModReferences;
 import net.thep2wking.apocabuckets.registry.ModRecipes;
+import net.thep2wking.apocabuckets.init.ModEntities;
+import net.thep2wking.apocabuckets.init.ModItems;
 import net.thep2wking.apocabuckets.registry.ModOreDict;
 import net.thep2wking.apocabuckets.registry.ModRegistry;
+import net.thep2wking.apocabuckets.util.handler.ApocalypseWorldDataHandler;
+import net.thep2wking.apocabuckets.util.network.ModNetworkHandler;
 import net.thep2wking.apocabuckets.util.proxy.CommonProxy;
 
 
@@ -44,14 +49,16 @@ public class ApocaBuckets {
         @Override
         @SideOnly(Side.CLIENT)
         public ItemStack getTabIconItem() {
-            return ItemStack.EMPTY;
+            return new ItemStack(ModItems.APOCALYPTIC_BUCKET);
         }
     };
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ModLogger.preInitLogger(MODID);
+        ModEntities.registerEntities();
         ModRegistry.registerFluids();
+        ModNetworkHandler.registerMessages();
         PROXY.preInit(event);
     }
 
@@ -60,6 +67,7 @@ public class ApocaBuckets {
         ModLogger.initLogger(MODID);
         ModOreDict.registerOreDict();
         ModRecipes.registerRecipes();
+        MinecraftForge.EVENT_BUS.register(new ApocalypseWorldDataHandler());
         PROXY.init(event);
     }
 

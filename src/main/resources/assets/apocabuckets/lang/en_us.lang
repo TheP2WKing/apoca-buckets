@@ -5,38 +5,40 @@ itemGroup.apocabuckets.name=Apoca Buckets Reloaded
 join.apocabucketsreloaded.message=Destroying your world made easy!
 
 # fluids
-tile.apocabuckets.hot_water.name=Apoca Buckets
-fluid.apocabuckets.hot_water=Apoca Buckets
-tile.apocabuckets.spring_water.name=Spring Water
-fluid.apocabuckets.spring_water=Spring Water
-tile.apocabuckets.superheated_lava_hw.name=Superheated Lava
-fluid.apocabuckets.superheated_lava_hw=Superheated Lava
+tile.apocabuckets.tsunami.name=Tsunami
+fluid.apocabuckets.tsunami=Tsunami
+tile.apocabuckets.lava_tsunami.name=Lava Tsunami
+fluid.apocabuckets.lava_tsunami=Lava Tsunami
+tile.apocabuckets.frozen.name=Frozen
+fluid.apocabuckets.frozen=Frozen
+tile.apocabuckets.toxic.name=Toxic
+fluid.apocabuckets.toxic=Toxic
+tile.apocabuckets.void.name=Void
+fluid.apocabuckets.void=Void
+
+# blocks
+tile.apocabuckets.white_paint.name=White Paint
+tile.apocabuckets.purple_paint.name=Purple Paint
+tile.apocabuckets.fire.name=Fire
+tile.apocabuckets.green_fire.name=Green Fire
 
 # items
-item.apocabuckets.boiled_leather.name=Boiled Leather
-item.apocabuckets.boiled_flesh.name=Boiled Flesh
-item.apocabuckets.boiled_clownfish.name=Boiled Clownfish
-item.apocabuckets.boiled_pufferfish.name=Boiled Pufferfish
-item.apocabuckets.detoxified_spider_eye.name=Detoxified Spider Eye
+item.apocabuckets.apocalyptic_bucket.name=Apocalyptic Bucket
 
-# damage sources
-death.attack.apocabuckets.hot_water=%1$s boiled to death 
-death.attack.apocabuckets.hot_water.player=%1$s was perfectly steamed whilst trying to escape %2$s
+item.apocabuckets.tsunami_bucket.name=Tsunami Bucket
+item.apocabuckets.lava_tsunami_bucket.name=Lava Tsunami Bucket
+item.apocabuckets.frozen_bucket.name=Frozen Bucket
+item.apocabuckets.toxic_bucket.name=Toxic Bucket
+item.apocabuckets.white_paint_bucket.name=White Paint Bucket
+item.apocabuckets.purple_paint_bucket.name=Purple Paint Bucket
+item.apocabuckets.void_bucket.name=Void Bucket
+item.apocabuckets.fire_bucket.name=Fire Bucket
+item.apocabuckets.black_hole_bucket.name=Black Hole Bucket
 
-death.attack.apocabuckets.superheated_lava=%1$s melted
-death.attack.apocabuckets.superheated_lava.player=%1$s melted whilst trying to escape %2$s
+item.apocabuckets.desaster_recovery_remote.name=Desaster Recovery Remote
+item.apocabuckets.desaster_recovery_remote.tip1=Stopped all active apocalypses!
+item.apocabuckets.desaster_recovery_remote.tip2=Resumed all active apocalypses!
+item.apocabuckets.desaster_recovery_remote.tip3=This time there is no escape!
 
-# jei
-jei.apocabuckets.boiling.category=Boiling
-jei.apocabuckets.boiling.category.info1=Items or blocks must be dropped.
-jei.apocabuckets.spring_water.category=Spring Water
-jei.apocabuckets.spring_water.category.info1=Must be placed on top of each other.
-jei.apocabuckets.spring_water.category.info2=Any kind of stone can be used.
-jei.apocabuckets.spring_water.category.info3=Any kind of hot fluid can be used.
-
-item.apocabuckets.hot_water_bucket.jei1=Will boil you to death if bath in it for too long. Items will not be destroyed when they come in contract with the hot water. Items can be cooked by throwing them into hot water.
-fluid.apocabuckets.hot_water.jei1=Will boil you to death if bath in it for too long. Items will not be destroyed when they come in contract with the hot water. Items can be cooked by throwing them into hot water.
-item.apocabuckets.spring_water_bucket.jei1=Will remove all your status effects. Your health will also slowly regenerate at the cost of your hunger. Can be crafted by placing Apoca Buckets on top of Stone with Lava under it, the Apoca Buckets have a 25 percent chance per tick to change into Spring Water. 
-fluid.apocabuckets.spring_water.jei1=Will remove all your status effects. Your health will also slowly regenerate at the cost of your hunger. Can be crafted by placing Apoca Buckets on top of Stone with Lava under it, the Apoca Buckets have a 25 percent chance per tick to change into Spring Water. 
-item.apocabuckets.superheated_lava_bucket.jei1=Not many have obtained this liquid before. The few who had was found burned with a bottom-less hole next by them.\n\nWarning:\nDeals massive damage to entities and destroys any block that touches it!
-fluid.apocabuckets.superheated_lava.jei1=Not many have obtained this liquid before. The few who had was found burned with a bottom-less hole next by them.\n\nWarning:\nDeals massive damage to entities and destroys any block that touches it!
+# entities
+entity.apocabuckets.black_hole.name=Black Hole

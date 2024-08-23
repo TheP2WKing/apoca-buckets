@@ -7,9 +7,13 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.thep2wking.apocabuckets.ApocaBuckets;
 import net.thep2wking.apocabuckets.config.categories.Content;
+import net.thep2wking.apocabuckets.config.categories.Desaster;
 
 @Config(modid = ApocaBuckets.MODID, name = ApocaBuckets.MODID, category = ApocaBuckets.MODID)
 public class ApocaBucketsConfig {
+	@Config.Name("desaster")
+    public static final Desaster DESASTER = new Desaster();
+
 	@Config.Name("content")
     public static final Content CONTENT = new Content();
 
