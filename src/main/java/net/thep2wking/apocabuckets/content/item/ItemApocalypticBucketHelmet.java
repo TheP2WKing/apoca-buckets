@@ -1,8 +1,5 @@
 package net.thep2wking.apocabuckets.content.item;
 
-import java.util.UUID;
-
-import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -28,25 +25,21 @@ public class ItemApocalypticBucketHelmet extends ModItemArmorBase {
 		super(modid, name, tab, material, renderIndex, slot, rarity, hasEffect, tooltipLines, annotationLines);
 	}
 
-	public static final UUID HELMET_UUID = UUID.fromString("b19bc0ed-be55-4a91-9129-5abf6cd57858");
-
-	@Override
-	public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
-		Multimap<String, AttributeModifier> attributes = LinkedHashMultimap.create();
-		if (slot == this.getEquipmentSlot()) {
-			attributes.putAll(super.getAttributeModifiers(this.getEquipmentSlot(), new ItemStack(this)));
-			ModArmorHelper.addHelmetModifier(attributes, this, slot,
-					SharedMonsterAttributes.KNOCKBACK_RESISTANCE, ModReferences.ATTRIBUTE_KNOCKBACK_RESISTANCE, 0.5,
-					AttributeModifierOperation.ADD, HELMET_UUID);
-			return attributes;
-		}
-		return attributes;
-	}
-
 	@Override
 	public boolean isDamageable() {
 		return false;
 	}
+
+	@Override
+	public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
+		Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(slot, stack);
+		if (slot == armorType && ApocaBucketsConfig.CONTENT.APOCALYPTIC_BUCKET_HELMET_EFFECTS) {
+			ModArmorHelper.addFullArmorModifier(multimap, stack, slot, SharedMonsterAttributes.KNOCKBACK_RESISTANCE,
+					ModReferences.ATTRIBUTE_KNOCKBACK_RESISTANCE, 0.5, AttributeModifierOperation.ADD);
+		}
+		return multimap;
+	}
+
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
