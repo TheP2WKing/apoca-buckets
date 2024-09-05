@@ -11,7 +11,7 @@ public class ClientProxy extends CommonProxy {
 		ModRenderer.registerEntityRender();
 	}
 
-	public void Init(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event) {
 		super.init(event);
 	}
 

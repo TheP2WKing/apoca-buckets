@@ -1,7 +1,7 @@
 package net.thep2wking.apocabuckets.util.network;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -30,7 +30,7 @@ public class MessageStopApocalypse implements IMessage {
     public static class Handler implements IMessageHandler<MessageStopApocalypse, IMessage> {
         @Override
         public IMessage onMessage(MessageStopApocalypse message, MessageContext ctx) {
-            World world = ctx.getServerHandler().player.getEntityWorld();
+            WorldServer world = ctx.getServerHandler().player.getServerWorld();
             ModWorldSavedData apocalypseData = ModWorldSavedData.get(world);
             if (apocalypseData != null) {
                 apocalypseData.toggleStopApocalypse();
