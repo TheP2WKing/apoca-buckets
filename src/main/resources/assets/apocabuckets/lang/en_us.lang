@@ -36,9 +36,9 @@ item.apocabuckets.fire_bucket.name=Fire Bucket
 item.apocabuckets.black_hole_bucket.name=Black Hole Bucket
 
 item.apocabuckets.desaster_recovery_remote.name=Desaster Recovery Remote
-item.apocabuckets.desaster_recovery_remote.tip1=Stopped all active apocalypses!
-item.apocabuckets.desaster_recovery_remote.tip2=Resumed all active apocalypses!
-item.apocabuckets.desaster_recovery_remote.tip3=This time there is no escape!
+item.apocabuckets.desaster_recovery_remote.annotation1=Stopped all active apocalypses!
+item.apocabuckets.desaster_recovery_remote.annotation2=Resumed all active apocalypses!
+item.apocabuckets.desaster_recovery_remote.annotation3=This time there is no escape!
 
 # entities
 entity.apocabuckets.black_hole.name=Black Hole
