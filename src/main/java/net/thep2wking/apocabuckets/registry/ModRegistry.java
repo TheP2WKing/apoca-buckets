@@ -64,6 +64,7 @@ public class ModRegistry {
 
 	public static void registerFluids() {
 		ModLogger.registeredFluidsLogger(ApocaBuckets.MODID);
+
 		if (ApocaBucketsConfig.CONTENT.REGISTER_FORGE_BUCKETS_FOR_FLUIDS) {
 			ModRegistryHelper.registerFluid(ModFluids.TSUNAMI);
 			ModRegistryHelper.registerFluid(ModFluids.LAVA_TSUNAMI);
