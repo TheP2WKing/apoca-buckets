@@ -15,18 +15,17 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fluids.Fluid;
-import net.thep2wking.apocabuckets.api.ModBlockFluidApocalypticBase;
 import net.thep2wking.apocabuckets.config.ApocaBucketsConfig;
 import net.thep2wking.apocabuckets.init.ModItems;
 import net.thep2wking.apocabuckets.util.handler.ModWorldSavedData;
 import net.thep2wking.oedldoedlcore.util.ModPotionUtil;
 
-public class BlockFluidToxic extends ModBlockFluidApocalypticBase {
+public class BlockFluidToxic extends BlockFluidTsunami {
 	public BlockFluidToxic(String modid, String name, Fluid fluid, int fogColor, Material material, MapColor mapColor) {
 		super(modid, name, fluid, fogColor, material, mapColor);
 	}
@@ -36,7 +35,8 @@ public class BlockFluidToxic extends ModBlockFluidApocalypticBase {
 		return new ItemStack(ModItems.TOXIC_BUCKET);
 	}
 
-	public boolean isDisabled(World world) {
+	@Override
+	public boolean isDisabled(WorldServer world) {
 		return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DESASTER.TOXIC
 				|| !ApocaBucketsConfig.DESASTER.ENABLE_ALL_DESASTERS;
 	}
@@ -56,28 +56,9 @@ public class BlockFluidToxic extends ModBlockFluidApocalypticBase {
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		super.updateTick(world, pos, state, rand);
-		if (isDisabled(world)) {
-			return;
-		}
-		int level = state.getValue(LEVEL);
-		if (level > 0) {
-			if (world.getBlockState(pos).getBlock() == this) {
-				world.setBlockState(pos, this.getDefaultState().withProperty(LEVEL, 0), 2);
-			}
-		}
-		for (EnumFacing direction : EnumFacing.HORIZONTALS) {
-			BlockPos adjacentPos = pos.offset(direction);
-			IBlockState adjacentState = world.getBlockState(adjacentPos);
-			if (adjacentState.getMaterial() == Material.AIR) {
-				world.setBlockState(adjacentPos, this.getDefaultState().withProperty(LEVEL, 0), 2);
-			}
-		}
-		BlockPos belowPos = pos.down();
-		IBlockState belowState = world.getBlockState(belowPos);
-		if (belowState.getMaterial() == Material.AIR) {
-			world.setBlockState(belowPos, this.getDefaultState().withProperty(LEVEL, 0), 2);
-		}
-
+		// if (isDisabled(world)) {
+		// 	return;
+		// }
 		AxisAlignedBB boundingBox = new AxisAlignedBB(pos).grow(1);
 		List<Entity> entities = world.getEntitiesWithinAABB(Entity.class, boundingBox);
 		for (Entity entity : entities) {

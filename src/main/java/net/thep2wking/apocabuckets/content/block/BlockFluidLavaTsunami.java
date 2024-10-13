@@ -3,7 +3,7 @@ package net.thep2wking.apocabuckets.content.block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fluids.Fluid;
 import net.thep2wking.apocabuckets.config.ApocaBucketsConfig;
 import net.thep2wking.apocabuckets.init.ModItems;
@@ -21,7 +21,7 @@ public class BlockFluidLavaTsunami extends BlockFluidTsunami {
     }
 
     @Override
-    public boolean isDisabled(World world) {
+    public boolean isDisabled(WorldServer world) {
         return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DESASTER.LAVA_TSUNAMI
                 || !ApocaBucketsConfig.DESASTER.ENABLE_ALL_DESASTERS;
     }

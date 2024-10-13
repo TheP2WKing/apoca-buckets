@@ -25,6 +25,6 @@ public class ModRecipes {
 		ModRecipeHelper.addShapelessRecipe(ApocaBuckets.MODID, "black_hole_bucket", new ItemStack(ModItems.BLACK_HOLE_BUCKET, 1, 0), "bucketApocalypticEmpty", "enderpearl");
 
 
-		ModRecipeHelper.addShapedRecipe(ApocaBuckets.MODID, "desaster_recovery_remote", new ItemStack(ModItems.DESASTER_RECOVERY_REMOTE, 1, 0), " AB", "ACA", "DA ", 'A', "ingotBrickNether", 'B', "netherStar", 'C', "commandBlock", 'D', "bucketApocalypticEmpty");
+		ModRecipeHelper.addShapedRecipe(ApocaBuckets.MODID, "disaster_recovery_remote", new ItemStack(ModItems.DISASTER_RECOVERY_REMOTE, 1, 0), " AB", "ACA", "DA ", 'A', "ingotBrickNether", 'B', "netherStar", 'C', "commandBlock", 'D', "bucketApocalypticEmpty");
 	}
 }

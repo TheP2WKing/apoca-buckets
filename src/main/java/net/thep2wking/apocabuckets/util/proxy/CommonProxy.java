@@ -5,7 +5,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.thep2wking.apocabuckets.ApocaBuckets;
-import net.thep2wking.apocabuckets.integration.TOPCompatibility;
+import net.thep2wking.apocabuckets.integration.top.TOPCompatibility;
 import net.thep2wking.oedldoedlcore.util.ModLogger;
 
 public class CommonProxy {

@@ -1,4 +1,4 @@
-package net.thep2wking.apocabuckets.integration;
+package net.thep2wking.apocabuckets.integration.top;
 
 import mcjty.theoneprobe.Tools;
 import mcjty.theoneprobe.api.ElementAlignment;

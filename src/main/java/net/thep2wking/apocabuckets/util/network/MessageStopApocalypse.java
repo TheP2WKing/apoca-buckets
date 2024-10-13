@@ -30,11 +30,13 @@ public class MessageStopApocalypse implements IMessage {
     public static class Handler implements IMessageHandler<MessageStopApocalypse, IMessage> {
         @Override
         public IMessage onMessage(MessageStopApocalypse message, MessageContext ctx) {
-            WorldServer world = ctx.getServerHandler().player.getServerWorld();
-            ModWorldSavedData apocalypseData = ModWorldSavedData.get(world);
-            if (apocalypseData != null) {
-                apocalypseData.toggleStopApocalypse();
-            }
+            WorldServer worldServer = ctx.getServerHandler().player.getServerWorld();
+            worldServer.addScheduledTask(() -> {
+                ModWorldSavedData apocalypseData = ModWorldSavedData.get(worldServer);
+                if (apocalypseData != null) {
+                    apocalypseData.toggleStopApocalypse();
+                }
+            });
             return null;
         }
     }

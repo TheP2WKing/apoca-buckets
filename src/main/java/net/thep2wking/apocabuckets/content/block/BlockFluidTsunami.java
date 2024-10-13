@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fluids.Fluid;
 import net.thep2wking.apocabuckets.api.ModBlockFluidApocalypticBase;
 import net.thep2wking.apocabuckets.config.ApocaBucketsConfig;
@@ -26,7 +27,7 @@ public class BlockFluidTsunami extends ModBlockFluidApocalypticBase {
         return new ItemStack(ModItems.TSUNAMI_BUCKET);
     }
 
-    public boolean isDisabled(World world) {
+    public boolean isDisabled(WorldServer world) {
         return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DESASTER.TSUNAMI
                 || !ApocaBucketsConfig.DESASTER.ENABLE_ALL_DESASTERS;
     }
@@ -34,10 +35,18 @@ public class BlockFluidTsunami extends ModBlockFluidApocalypticBase {
     @Override
     public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
         super.updateTick(world, pos, state, rand);
-        if (isDisabled(world)) {
+        if (!(world instanceof WorldServer)) {
+            return;
+        }
+        WorldServer worldServer = (WorldServer) world;
+        if (isDisabled(worldServer)) {
             return;
         }
         int level = state.getValue(LEVEL);
+        worldServer.addScheduledTask(() -> spreadFluid(worldServer, pos, state, rand, level));
+    }
+
+    private void spreadFluid(World world, BlockPos pos, IBlockState state, Random rand, int level) {
         if (level > 0) {
             if (world.getBlockState(pos).getBlock() == this) {
                 world.setBlockState(pos, this.getDefaultState().withProperty(LEVEL, 0), 2);

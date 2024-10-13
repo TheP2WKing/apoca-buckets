@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fluids.Fluid;
 import net.thep2wking.apocabuckets.api.ModBlockFluidApocalypticBase;
 import net.thep2wking.apocabuckets.config.ApocaBucketsConfig;
@@ -39,29 +40,35 @@ public class BlockFluidVoid extends ModBlockFluidApocalypticBase {
 		ModPotionUtil.addEffectNotInCreativeMode(entityIn, MobEffects.BLINDNESS, 20 * 60 * 10, 99);
 	}
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		super.updateTick(world, pos, state, rand);
-		if (isDisabled(world)) {
-			return;
-		}
-		int level = state.getValue(LEVEL);
-		if (level > 0) {
-			if (world.getBlockState(pos).getBlock() == this) {
-				world.setBlockState(pos, this.getDefaultState().withProperty(LEVEL, 0), 2);
-			}
-		}
-		for (EnumFacing direction : EnumFacing.HORIZONTALS) {
-			BlockPos adjacentPos = pos.offset(direction);
-			IBlockState adjacentState = world.getBlockState(adjacentPos);
-			if (adjacentState.getMaterial() == Material.AIR) {
-				world.setBlockState(adjacentPos, this.getDefaultState().withProperty(LEVEL, 0), 2);
-			}
-		}
-		BlockPos belowPos = pos.down();
-		IBlockState belowState = world.getBlockState(belowPos);
-		if (belowState.getMaterial() == Material.AIR) {
-			world.setBlockState(belowPos, this.getDefaultState().withProperty(LEVEL, 0), 2);
-		}
-	}
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+        super.updateTick(world, pos, state, rand);
+        if (isDisabled(world)) {
+            return;
+        }
+        int level = state.getValue(LEVEL);
+        if (!world.isRemote && world instanceof WorldServer) {
+            ((WorldServer) world).addScheduledTask(() -> spreadFluid(world, pos, state, rand, level));
+        }
+    }
+
+    private void spreadFluid(World world, BlockPos pos, IBlockState state, Random rand, int level) {
+        if (level > 0) {
+            if (world.getBlockState(pos).getBlock() == this) {
+                world.setBlockState(pos, this.getDefaultState().withProperty(LEVEL, 0), 2);
+            }
+        }
+        for (EnumFacing direction : EnumFacing.HORIZONTALS) {
+            BlockPos adjacentPos = pos.offset(direction);
+            IBlockState adjacentState = world.getBlockState(adjacentPos);
+            if (adjacentState.getMaterial() == Material.AIR) {
+                world.setBlockState(adjacentPos, this.getDefaultState().withProperty(LEVEL, 0), 2);
+            }
+        }
+        BlockPos belowPos = pos.down();
+        IBlockState belowState = world.getBlockState(belowPos);
+        if (belowState.getMaterial() == Material.AIR) {
+            world.setBlockState(belowPos, this.getDefaultState().withProperty(LEVEL, 0), 2);
+        }
+    }
 }

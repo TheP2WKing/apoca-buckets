@@ -11,7 +11,7 @@ import net.thep2wking.apocabuckets.config.categories.Desaster;
 
 @Config(modid = ApocaBuckets.MODID, name = ApocaBuckets.MODID, category = ApocaBuckets.MODID)
 public class ApocaBucketsConfig {
-	@Config.Name("desaster")
+	@Config.Name("disaster")
     public static final Desaster DESASTER = new Desaster();
 
 	@Config.Name("content")

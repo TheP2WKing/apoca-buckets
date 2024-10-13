@@ -22,6 +22,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thep2wking.apocabuckets.config.ApocaBucketsConfig;
@@ -98,22 +99,35 @@ public class BlockGreenFire extends ModBlockBase {
 		return BlockFaceShape.UNDEFINED;
 	}
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		EnumFacing[] directions = { EnumFacing.NORTH, EnumFacing.SOUTH, EnumFacing.WEST, EnumFacing.EAST,
-				EnumFacing.DOWN };
-		if (!isDisabled(world)) {
-			for (EnumFacing direction : directions) {
-				BlockPos targetPos = pos.offset(direction);
-				IBlockState targetState = world.getBlockState(targetPos);
-				if ((world.isAirBlock(targetPos) || targetState.getBlock().isReplaceable(world, targetPos)) &&
-						!targetState.getMaterial().isLiquid()) {
-					world.setBlockState(targetPos, this.getDefaultState());
-				}
-			}
-		}
-		world.scheduleUpdate(pos, this, this.tickRate(world));
-	}
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+        super.updateTick(world, pos, state, rand);
+        if (isDisabled(world)) {
+            world.scheduleUpdate(pos, this, this.tickRate(world));
+            return;
+        }
+
+        if (!world.isRemote && world instanceof WorldServer) {
+            ((WorldServer) world).addScheduledTask(() -> {
+                boolean shouldUpdate = false;
+                EnumFacing[] directions = { EnumFacing.NORTH, EnumFacing.SOUTH, EnumFacing.WEST, EnumFacing.EAST, EnumFacing.DOWN };
+                for (EnumFacing direction : directions) {
+                    BlockPos targetPos = pos.offset(direction);
+                    IBlockState targetState = world.getBlockState(targetPos);
+                    if ((world.isAirBlock(targetPos) || targetState.getBlock().isReplaceable(world, targetPos)) &&
+                            !targetState.getMaterial().isLiquid()) {
+                        world.setBlockState(targetPos, this.getDefaultState());
+                        shouldUpdate = true;
+                    }
+                }
+                if (shouldUpdate) {
+                    world.scheduleUpdate(pos, this, this.tickRate(world));
+                } else {
+                    world.setBlockToAir(pos);
+                }
+            });
+        }
+    }
 
 	@Override
 	public int tickRate(World worldIn) {

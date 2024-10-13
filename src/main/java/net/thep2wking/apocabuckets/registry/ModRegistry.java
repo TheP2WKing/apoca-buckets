@@ -59,7 +59,7 @@ public class ModRegistry {
 		ModRegistryHelper.registerItem(event, ModItems.FIRE_BUCKET);
 		ModRegistryHelper.registerItem(event, ModItems.BLACK_HOLE_BUCKET);
 
-		ModRegistryHelper.registerItem(event, ModItems.DESASTER_RECOVERY_REMOTE);
+		ModRegistryHelper.registerItem(event, ModItems.DISASTER_RECOVERY_REMOTE);
 	}
 
 	public static void registerFluids() {

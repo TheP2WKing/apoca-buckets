@@ -13,6 +13,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.thep2wking.apocabuckets.config.ApocaBucketsConfig;
 import net.thep2wking.apocabuckets.init.ModItems;
 import net.thep2wking.apocabuckets.util.handler.ModWorldSavedData;
@@ -62,25 +63,31 @@ public class BlockWhitePlaint extends ModBlockBase {
 		world.scheduleUpdate(pos, this, getSpreadSpeed());
 	}
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		super.updateTick(world, pos, state, rand);
-		boolean shouldUpdate = false;
-		if (!isDisabled(world)) {
-			for (int i = 0; i < this.spreadTo.length; i += 3) {
-				BlockPos targetPos = pos.add(this.spreadTo[i], this.spreadTo[i + 1], this.spreadTo[i + 2]);
-				if (world.isAirBlock(targetPos) || world.getBlockState(targetPos).getBlock() == this)
-					continue;
-				world.setBlockState(targetPos, this.getDefaultState());
-				shouldUpdate = true;
-			}
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+        super.updateTick(world, pos, state, rand);
+        if (isDisabled(world)) {
+            world.scheduleUpdate(pos, this, getSpreadSpeed());
+            return;
+        }
 
-			if (shouldUpdate) {
-				world.scheduleUpdate(pos, this, getSpreadSpeed());
-			} else if (getShouldDecay()) {
-				world.setBlockToAir(pos);
-			}
-		}
-		world.scheduleUpdate(pos, this, getSpreadSpeed());
-	}
+        if (!world.isRemote && world instanceof WorldServer) {
+            ((WorldServer) world).addScheduledTask(() -> {
+                boolean shouldUpdate = false;
+                for (int i = 0; i < this.spreadTo.length; i += 3) {
+                    BlockPos targetPos = pos.add(this.spreadTo[i], this.spreadTo[i + 1], this.spreadTo[i + 2]);
+                    if (world.isAirBlock(targetPos) || world.getBlockState(targetPos).getBlock() == this) {
+                        continue;
+                    }
+                    world.setBlockState(targetPos, this.getDefaultState());
+                    shouldUpdate = true;
+                }
+                if (shouldUpdate) {
+                    world.scheduleUpdate(pos, this, getSpreadSpeed());
+                } else if (getShouldDecay()) {
+                    world.setBlockToAir(pos);
+                }
+            });
+        }
+    }
 }

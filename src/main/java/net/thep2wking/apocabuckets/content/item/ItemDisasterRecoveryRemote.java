@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.thep2wking.apocabuckets.config.ApocaBucketsConfig;
@@ -17,8 +16,8 @@ import net.thep2wking.apocabuckets.util.network.ModNetworkHandler;
 import net.thep2wking.oedldoedlcore.api.item.ModItemBase;
 import net.thep2wking.oedldoedlcore.util.ModTooltips;
 
-public class ItemDesasterRecoveryRemote extends ModItemBase {
-    public ItemDesasterRecoveryRemote(String modid, String name, CreativeTabs tab, EnumRarity rarity, boolean hasEffect,
+public class ItemDisasterRecoveryRemote extends ModItemBase {
+    public ItemDisasterRecoveryRemote(String modid, String name, CreativeTabs tab, EnumRarity rarity, boolean hasEffect,
             int tooltipLines, int annotationLines) {
         super(modid, name, tab, rarity, hasEffect, tooltipLines, annotationLines);
         setMaxStackSize(1);

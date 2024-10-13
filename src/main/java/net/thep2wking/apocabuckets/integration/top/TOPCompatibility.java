@@ -1,4 +1,4 @@
-package net.thep2wking.apocabuckets.integration;
+package net.thep2wking.apocabuckets.integration.top;
 
 import java.util.function.Function;
 
@@ -15,7 +15,7 @@ public class TOPCompatibility {
             return;
         registered = true;
         FMLInterModComms.sendFunctionMessage("theoneprobe", "getTheOneProbe",
-                "net.thep2wking.apocabuckets.integration.TOPCompatibility$GetTheOneProbe");
+                "net.thep2wking.apocabuckets.integration.top.TOPCompatibility$GetTheOneProbe");
     }
 
     public static class GetTheOneProbe implements Function<ITheOneProbe, Void> {
