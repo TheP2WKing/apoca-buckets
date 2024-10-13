@@ -10,7 +10,6 @@ public class ModEntities {
 		ModLogger.registeredEntitiesLogger(ApocaBuckets.MODID);
 
 		int id = 0; 
-		
 		ModRegistryHelper.registerEntity(ApocaBuckets.MODID, "black_hole", ApocaBuckets.INSTANCE, id++, EntityBlackHole.class, 640, 10, true);
 	}
 }
