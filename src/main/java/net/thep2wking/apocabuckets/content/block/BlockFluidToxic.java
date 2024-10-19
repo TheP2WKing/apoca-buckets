@@ -37,8 +37,8 @@ public class BlockFluidToxic extends BlockFluidTsunami {
 
 	@Override
 	public boolean isDisabled(WorldServer world) {
-		return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DESASTER.TOXIC
-				|| !ApocaBucketsConfig.DESASTER.ENABLE_ALL_DESASTERS;
+		return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DISASTER.TOXIC
+				|| !ApocaBucketsConfig.DISASTER.ENABLE_ALL_DISASTERS;
 	}
 
 	@Override

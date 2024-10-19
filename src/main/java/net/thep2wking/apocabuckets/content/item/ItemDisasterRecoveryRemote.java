@@ -29,9 +29,9 @@ public class ItemDisasterRecoveryRemote extends ModItemBase {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
-        if (ApocaBucketsConfig.CONTENT.DESASTER_RECOVERY_REMOTE_CONTROLS_APOCALYPSES) {
+        if (ApocaBucketsConfig.CONTENT.DISASTER_RECOVERY_REMOTE_CONTROLS_APOCALYPSES) {
             if (!world.isRemote && world != null && world instanceof WorldServer) {
-                if (ApocaBucketsConfig.CONTENT.DESASTER_RECOVERY_REMOTE_USEABLE_IN_SURVIVAL
+                if (ApocaBucketsConfig.CONTENT.DISASTER_RECOVERY_REMOTE_USEABLE_IN_SURVIVAL
                         || player.capabilities.isCreativeMode) {
                     WorldServer worldServer = (WorldServer) world;
                     ModWorldSavedData apocalypseData = ModWorldSavedData.get(worldServer);

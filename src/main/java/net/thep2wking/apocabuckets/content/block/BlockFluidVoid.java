@@ -30,8 +30,8 @@ public class BlockFluidVoid extends ModBlockFluidApocalypticBase {
 	}
 
 	public boolean isDisabled(World world) {
-		return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DESASTER.VOID
-				|| !ApocaBucketsConfig.DESASTER.ENABLE_ALL_DESASTERS;
+		return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DISASTER.VOID
+				|| !ApocaBucketsConfig.DISASTER.ENABLE_ALL_DISASTERS;
 	}
 
 	@Override

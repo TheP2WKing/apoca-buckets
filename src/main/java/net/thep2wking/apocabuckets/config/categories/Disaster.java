@@ -2,9 +2,9 @@ package net.thep2wking.apocabuckets.config.categories;
 
 import net.minecraftforge.common.config.Config;
 
-public class Desaster {
-	@Config.Name("# Enable All Desasters")
-    public boolean ENABLE_ALL_DESASTERS = true;
+public class Disaster {
+	@Config.Name("# Enable All Disasters")
+    public boolean ENABLE_ALL_DISASTERS = true;
 
 	@Config.Name("Tsunami")
     public boolean TSUNAMI = true;

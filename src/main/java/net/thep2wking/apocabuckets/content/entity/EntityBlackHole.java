@@ -28,8 +28,8 @@ public class EntityBlackHole extends ModEntityApocalytipBase {
 	}
 
 	public boolean isDisabled(World world) {
-		return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DESASTER.BLACK_HOLE
-				|| !ApocaBucketsConfig.DESASTER.ENABLE_ALL_DESASTERS;
+		return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DISASTER.BLACK_HOLE
+				|| !ApocaBucketsConfig.DISASTER.ENABLE_ALL_DISASTERS;
 	}
 
 	@Override

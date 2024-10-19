@@ -28,8 +28,8 @@ public class BlockFluidTsunami extends ModBlockFluidApocalypticBase {
     }
 
     public boolean isDisabled(WorldServer world) {
-        return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DESASTER.TSUNAMI
-                || !ApocaBucketsConfig.DESASTER.ENABLE_ALL_DESASTERS;
+        return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DISASTER.TSUNAMI
+                || !ApocaBucketsConfig.DISASTER.ENABLE_ALL_DISASTERS;
     }
 
     @Override

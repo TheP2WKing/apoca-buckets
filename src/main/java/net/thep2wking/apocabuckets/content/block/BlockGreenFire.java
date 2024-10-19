@@ -44,8 +44,8 @@ public class BlockGreenFire extends ModBlockBase {
 	}
 
 	public boolean isDisabled(World world) {
-		return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DESASTER.FIRE
-				|| !ApocaBucketsConfig.DESASTER.ENABLE_ALL_DESASTERS;
+		return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DISASTER.FIRE
+				|| !ApocaBucketsConfig.DISASTER.ENABLE_ALL_DISASTERS;
 	}
 
 	@Override

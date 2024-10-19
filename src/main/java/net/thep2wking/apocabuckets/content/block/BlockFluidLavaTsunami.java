@@ -22,7 +22,7 @@ public class BlockFluidLavaTsunami extends BlockFluidTsunami {
 
     @Override
     public boolean isDisabled(WorldServer world) {
-        return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DESASTER.LAVA_TSUNAMI
-                || !ApocaBucketsConfig.DESASTER.ENABLE_ALL_DESASTERS;
+        return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DISASTER.LAVA_TSUNAMI
+                || !ApocaBucketsConfig.DISASTER.ENABLE_ALL_DISASTERS;
     }
 }

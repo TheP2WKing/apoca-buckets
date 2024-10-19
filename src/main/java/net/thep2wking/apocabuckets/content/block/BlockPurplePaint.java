@@ -27,8 +27,8 @@ public class BlockPurplePaint extends BlockWhitePlaint {
 
 	@Override
 	public boolean isDisabled(World world) {
-		return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DESASTER.PURPLE_PAINT
-				|| !ApocaBucketsConfig.DESASTER.ENABLE_ALL_DESASTERS;
+		return ModWorldSavedData.isApocalypseStopped(world) || !ApocaBucketsConfig.DISASTER.PURPLE_PAINT
+				|| !ApocaBucketsConfig.DISASTER.ENABLE_ALL_DISASTERS;
 	}
 
 	@Override
