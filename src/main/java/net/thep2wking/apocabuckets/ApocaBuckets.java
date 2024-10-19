@@ -22,8 +22,8 @@ import net.thep2wking.apocabuckets.init.ModEntities;
 import net.thep2wking.apocabuckets.init.ModItems;
 import net.thep2wking.apocabuckets.registry.ModOreDict;
 import net.thep2wking.apocabuckets.registry.ModRegistry;
+import net.thep2wking.apocabuckets.util.event.EventBloodMoon;
 import net.thep2wking.apocabuckets.util.handler.ApocalypseWorldDataHandler;
-import net.thep2wking.apocabuckets.util.network.ModNetworkHandler;
 import net.thep2wking.apocabuckets.util.proxy.CommonProxy;
 
 
@@ -58,7 +58,6 @@ public class ApocaBuckets {
         ModLogger.preInitLogger(MODID);
         ModEntities.registerEntities();
         ModRegistry.registerFluids();
-        ModNetworkHandler.registerMessages();
         PROXY.preInit(event);
     }
 
@@ -68,6 +67,7 @@ public class ApocaBuckets {
         ModOreDict.registerOreDict();
         ModRecipes.registerRecipes();
         MinecraftForge.EVENT_BUS.register(new ApocalypseWorldDataHandler());
+        MinecraftForge.EVENT_BUS.register(new EventBloodMoon());
         PROXY.init(event);
     }
 

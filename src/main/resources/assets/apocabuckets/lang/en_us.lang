@@ -34,11 +34,14 @@ item.apocabuckets.purple_paint_bucket.name=Purple Paint Bucket
 item.apocabuckets.void_bucket.name=Void Bucket
 item.apocabuckets.fire_bucket.name=Fire Bucket
 item.apocabuckets.black_hole_bucket.name=Black Hole Bucket
+item.apocabuckets.blood_moon_bucket.name=Blood Moon Bucket
 
 item.apocabuckets.disaster_recovery_remote.name=Disaster Recovery Remote
-item.apocabuckets.disaster_recovery_remote.annotation1=Stopped all active apocalypses!
-item.apocabuckets.disaster_recovery_remote.annotation2=Resumed all active apocalypses!
-item.apocabuckets.disaster_recovery_remote.annotation3=This time there is no escape!
+item.apocabuckets.disaster_recovery_remote.annotation1=Removed entities and events!
+item.apocabuckets.disaster_recovery_remote.annotation2=Stopped active apocalypses!
+item.apocabuckets.disaster_recovery_remote.annotation3=Resumed active apocalypses!
+item.apocabuckets.disaster_recovery_remote.annotation4=This time there is no escape!
 
 # entities
 entity.apocabuckets.black_hole.name=Black Hole
+entity.apocabuckets.blood_moon.name=Blood Moon

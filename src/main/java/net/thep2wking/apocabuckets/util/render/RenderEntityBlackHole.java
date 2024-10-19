@@ -23,11 +23,11 @@ public class RenderEntityBlackHole extends Render<EntityBlackHole> {
 	private float rotX;
 	private float rotY;
 	private float rotZ;
-	private ArrayList<Vector3f> partz;
+	private ArrayList<Vector3f> parts;
 
 	public RenderEntityBlackHole(RenderManager renderManager) {
 		super(renderManager);
-		this.partz = new ArrayList<>();
+		this.parts = new ArrayList<>();
 	}
 	
 	@Override
@@ -38,7 +38,7 @@ public class RenderEntityBlackHole extends Render<EntityBlackHole> {
 	@Override
 	public void doRender(EntityBlackHole entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		if (new Random().nextInt(15) == 0) {
-			this.partz.add(new Vector3f(new Random().nextFloat() * 4.0f - 2.0f, new Random().nextFloat() * 4.0f - 2.0f,
+			this.parts.add(new Vector3f(new Random().nextFloat() * 4.0f - 2.0f, new Random().nextFloat() * 4.0f - 2.0f,
 					new Random().nextFloat() * 4.0f - 2.0f));
 		}
 		World world = entity.getEntityWorld();
@@ -47,7 +47,7 @@ public class RenderEntityBlackHole extends Render<EntityBlackHole> {
 		this.rotX += new Random().nextFloat() / 530.0f;
 		this.rotY += new Random().nextFloat() / 650.0f;
 		this.rotZ += new Random().nextFloat() / 750.0f;
-		for (Vector3f part : this.partz) {
+		for (Vector3f part : this.parts) {
 			float speed;
 			if (part.x == 0.0f || part.y == 0.0f || part.z == 0.0f)
 				continue;
@@ -81,27 +81,23 @@ public class RenderEntityBlackHole extends Render<EntityBlackHole> {
 		}
 	}
 
-	public void drawBlock(EntityBlackHole entity, Block block, World world, double x, double y, double z, float scale) {
-		Vector3f v = new Vector3f(this.rotX, this.rotY, this.rotZ);
-		// int i = MathHelper.floor(entity.posX);
-		// int j = MathHelper.floor(entity.posY);
-		// int k = MathHelper.floor(entity.posZ);
-		GlStateManager.pushMatrix();
-		GlStateManager.translate((float) x, (float) y, (float) z);
-		// GlStateManager.translate((float) x - 0.5, (float) y, (float) z + 0.5);
-		// GlStateManager.translate(0.5f, 0.5f, 0.5f);
-		GlStateManager.rotate((float) Math.toDegrees(v.y), 1.0f, 0.0f, 0.0f);
-		GlStateManager.rotate((float) Math.toDegrees(v.x), 0.0f, 1.0f, 0.0f);
-		GlStateManager.rotate((float) Math.toDegrees(v.z), 0.0f, 0.0f, 1.0f);
-		GlStateManager.scale(scale, scale, scale);
-		this.bindEntityTexture(entity);
-		GlStateManager.disableLighting();
-		if (block != null) {
-			Minecraft.getMinecraft().getBlockRendererDispatcher().renderBlockBrightness(block.getDefaultState(), 1.0f);
-		}
-		GlStateManager.enableLighting();
-		GlStateManager.popMatrix();
-	}
+    public void drawBlock(EntityBlackHole entity, Block block, World world, double x, double y, double z, float scale) {
+        Vector3f v = new Vector3f(this.rotX, this.rotY, this.rotZ);
+
+        GlStateManager.pushMatrix();
+        GlStateManager.translate((float) x, (float) y + 0.5, (float) z);
+        GlStateManager.rotate((float) Math.toDegrees(v.y), 1.0f, 0.0f, 0.0f);
+        GlStateManager.rotate((float) Math.toDegrees(v.x), 0.0f, 1.0f, 0.0f);
+        GlStateManager.rotate((float) Math.toDegrees(v.z), 0.0f, 0.0f, 1.0f);
+        GlStateManager.scale(scale, scale, scale);
+        this.bindEntityTexture(entity);
+        GlStateManager.disableLighting();
+        if (block != null) {
+            Minecraft.getMinecraft().getBlockRendererDispatcher().renderBlockBrightness(block.getDefaultState(), 1.0f);
+        }
+        GlStateManager.enableLighting();
+        GlStateManager.popMatrix();
+    }
 
 	public static final RenderEntityBlackHole.Factory FACTORY = new RenderEntityBlackHole.Factory();
 

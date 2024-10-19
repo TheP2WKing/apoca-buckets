@@ -32,4 +32,7 @@ public class Desaster {
 
 	@Config.Name("Black Hole")
 	public boolean BLACK_HOLE = true;
+
+	@Config.Name("Blood Moon")
+	public boolean BLOOD_MOON = true;
 }

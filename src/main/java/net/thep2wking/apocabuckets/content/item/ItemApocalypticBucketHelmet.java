@@ -40,7 +40,6 @@ public class ItemApocalypticBucketHelmet extends ModItemArmorBase {
 		return multimap;
 	}
 
-
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
 		if (ApocaBucketsConfig.CONTENT.APOCALYPTIC_BUCKET_HELMET_EFFECTS) {

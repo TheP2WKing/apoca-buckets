@@ -46,19 +46,21 @@ public class ModItemApocalypticBucketBase extends ItemBucket {
 	public final CreativeTabs tab;
 	public final Block containedBlock;
 	public final String containedEntity;
+	public final boolean hasCustomBehavior;
 	public final EnumRarity rarity;
 	public final boolean hasEffect;
 	public final int tooltipLines;
 	public final int annotationLines;
 
-	public ModItemApocalypticBucketBase(String modid, String name, CreativeTabs tab, Block containedBlock, EnumRarity rarity,
-			boolean hasEffect, int tooltipLines, int annotationLines) {
+	public ModItemApocalypticBucketBase(String modid, String name, CreativeTabs tab, Block containedBlock,
+			EnumRarity rarity, boolean hasEffect, int tooltipLines, int annotationLines) {
 		super(containedBlock);
 		this.modid = modid;
 		this.name = name;
 		this.tab = tab;
 		this.containedBlock = containedBlock;
 		this.containedEntity = null;
+		this.hasCustomBehavior = false;
 		this.rarity = rarity;
 		this.hasEffect = hasEffect;
 		this.tooltipLines = tooltipLines;
@@ -69,14 +71,34 @@ public class ModItemApocalypticBucketBase extends ItemBucket {
 		setMaxStackSize(1);
 	}
 
-	public ModItemApocalypticBucketBase(String modid, String name, CreativeTabs tab, String containedEntity, EnumRarity rarity,
-			boolean hasEffect, int tooltipLines, int annotationLines) {
+	public ModItemApocalypticBucketBase(String modid, String name, CreativeTabs tab, String containedEntity,
+			EnumRarity rarity, boolean hasEffect, int tooltipLines, int annotationLines) {
 		super(null);
 		this.modid = modid;
 		this.name = name;
 		this.tab = tab;
 		this.containedBlock = null;
 		this.containedEntity = containedEntity;
+		this.hasCustomBehavior = false;
+		this.rarity = rarity;
+		this.hasEffect = hasEffect;
+		this.tooltipLines = tooltipLines;
+		this.annotationLines = annotationLines;
+		setUnlocalizedName(this.modid + "." + this.name);
+		setRegistryName(this.modid + ":" + this.name);
+		setCreativeTab(this.tab);
+		setMaxStackSize(1);
+	}
+
+	public ModItemApocalypticBucketBase(String modid, String name, CreativeTabs tab, EnumRarity rarity,
+			boolean hasEffect, int tooltipLines, int annotationLines) {
+		super(null);
+		this.modid = modid;
+		this.name = name;
+		this.tab = tab;
+		this.containedBlock = null;
+		this.containedEntity = null;
+		this.hasCustomBehavior = true;
 		this.rarity = rarity;
 		this.hasEffect = hasEffect;
 		this.tooltipLines = tooltipLines;
@@ -153,6 +175,10 @@ public class ModItemApocalypticBucketBase extends ItemBucket {
 		return containedEntity;
 	}
 
+	public boolean hasCustomBehavior() {
+		return hasCustomBehavior;
+	}
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
@@ -196,7 +222,7 @@ public class ModItemApocalypticBucketBase extends ItemBucket {
 
 	@Override
 	public boolean tryPlaceContainedLiquid(@Nullable EntityPlayer player, World worldIn, BlockPos posIn) {
-		if ((this.containedBlock == null || this.containedBlock == Blocks.AIR) && this.containedEntity == null) {
+		if ((this.containedBlock == null || this.containedBlock == Blocks.AIR) && this.containedEntity == null && this.hasCustomBehavior == false) {
 			return false;
 		} else {
 			boolean doesVaporize = false;
@@ -229,7 +255,8 @@ public class ModItemApocalypticBucketBase extends ItemBucket {
 						} else if (containedMaterial == Material.WATER) {
 							soundevent = SoundEvents.ITEM_BUCKET_EMPTY;
 						} else {
-							SoundType soundType = this.containedBlock.getSoundType(this.containedBlock.getDefaultState(), worldIn, posIn, null);
+							SoundType soundType = this.containedBlock
+									.getSoundType(this.containedBlock.getDefaultState(), worldIn, posIn, null);
 							soundevent = soundType.getPlaceSound();
 						}
 						worldIn.playSound(null, posIn, soundevent, SoundCategory.BLOCKS, 1.0F, 0.8F);
@@ -248,14 +275,20 @@ public class ModItemApocalypticBucketBase extends ItemBucket {
 						if (entity != null) {
 							entity.setPosition(posIn.getX() + 0.5, posIn.getY(), posIn.getZ() + 0.5);
 							worldIn.spawnEntity(entity);
-							worldIn.playSound(player, posIn, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1.0F,
-									1.0F);
 						}
+					}
+					return true;
+				} else if (this.hasCustomBehavior) {
+					if (!worldIn.isRemote) {
+						this.tryExcecuteCustomBehavior(worldIn, posIn);
 					}
 					return true;
 				}
 			}
 		}
 		return false;
+	}
+
+	public void tryExcecuteCustomBehavior(World worldIn, BlockPos posIn) {
 	}
 }

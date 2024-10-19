@@ -20,5 +20,6 @@ public class ModOreDict {
 		ModRecipeHelper.addOreDict("bucketApocalyptic", ModItems.VOID_BUCKET, 0);
 		ModRecipeHelper.addOreDict("bucketApocalyptic", ModItems.FIRE_BUCKET, 0);
 		ModRecipeHelper.addOreDict("bucketApocalyptic", ModItems.BLACK_HOLE_BUCKET, 0);
+		ModRecipeHelper.addOreDict("bucketApocalyptic", ModItems.BLOOD_MOON_BUCKET, 0);
 	}
 }

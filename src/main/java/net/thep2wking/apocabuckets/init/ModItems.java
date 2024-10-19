@@ -6,6 +6,7 @@ import net.thep2wking.apocabuckets.ApocaBuckets;
 import net.thep2wking.apocabuckets.api.ModItemApocalypticBucketBase;
 import net.thep2wking.apocabuckets.content.entity.EntityBlackHole;
 import net.thep2wking.apocabuckets.content.item.ItemApocalypticBucketHelmet;
+import net.thep2wking.apocabuckets.content.item.ItemBloodMoonBucket;
 import net.thep2wking.apocabuckets.content.item.ItemDisasterRecoveryRemote;
 import net.thep2wking.apocabuckets.content.itemblock.ItemBlockCreativePlaceable;
 import net.thep2wking.apocabuckets.content.itemblock.ItemBlockFire;
@@ -29,6 +30,7 @@ public class ModItems {
 	public static final Item VOID_BUCKET = new ModItemApocalypticBucketBase(ApocaBuckets.MODID, "void_bucket", ApocaBuckets.TAB, ModBlocks.VOID, ModRarities.LIGHT_PURPLE, true, 0, 0);
 	public static final Item FIRE_BUCKET = new ModItemApocalypticBucketBase(ApocaBuckets.MODID, "fire_bucket", ApocaBuckets.TAB, ModBlocks.GREEN_FIRE, ModRarities.LIGHT_PURPLE, true, 0, 0);
 	public static final Item BLACK_HOLE_BUCKET = new ModItemApocalypticBucketBase(ApocaBuckets.MODID, "black_hole_bucket", ApocaBuckets.TAB, EntityBlackHole.getRegistryName(), ModRarities.LIGHT_PURPLE, true, 0, 0);
+	public static final Item BLOOD_MOON_BUCKET = new ItemBloodMoonBucket(ApocaBuckets.MODID, "blood_moon_bucket", ApocaBuckets.TAB, ModRarities.LIGHT_PURPLE, true, 0, 0);
 	
 	public static final Item DISASTER_RECOVERY_REMOTE = new ItemDisasterRecoveryRemote(ApocaBuckets.MODID, "disaster_recovery_remote", ApocaBuckets.TAB, ModRarities.LIGHT_PURPLE, true, 0, 0);
 }
