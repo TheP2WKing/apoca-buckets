@@ -17,8 +17,8 @@ import net.thep2wking.apocabuckets.content.block.BlockWhitePlaint;
 import net.thep2wking.oedldoedlcore.util.ModToolTypes;
 
 public class ModBlocks {
-	public static final Block WHITE_PAINT = new BlockWhitePlaint(ApocaBuckets.MODID, "white_paint", ApocaBuckets.TAB, Material.ROCK, SoundType.STONE, MapColor.SNOW, 0, ModToolTypes.PICKAXE, 0F, 0F, 0);
-	public static final Block PURPLE_PAINT = new BlockPurplePaint(ApocaBuckets.MODID, "purple_paint", ApocaBuckets.TAB, Material.ROCK, SoundType.STONE, MapColor.PURPLE, 0, ModToolTypes.PICKAXE, 0F, 0F, 0);
+	public static final Block WHITE_PAINT = new BlockWhitePlaint(ApocaBuckets.MODID, "white_paint", ApocaBuckets.TAB, Material.ROCK, SoundType.STONE, MapColor.SNOW, 0, ModToolTypes.PICKAXE, 0.2F, 0F, 0);
+	public static final Block PURPLE_PAINT = new BlockPurplePaint(ApocaBuckets.MODID, "purple_paint", ApocaBuckets.TAB, Material.ROCK, SoundType.STONE, MapColor.PURPLE, 0, ModToolTypes.PICKAXE, 0.2F, 0F, 0);
 	public static final Block GREEN_FIRE = new BlockGreenFire(ApocaBuckets.MODID, "green_fire", ApocaBuckets.TAB, Material.FIRE, SoundType.CLOTH, MapColor.GREEN, 0, ModToolTypes.NO_TOOL, 0F, 0F, 15);
 
 	public static final BlockFluidClassic TSUNAMI = new BlockFluidTsunami(ApocaBuckets.MODID, "tsunami", ModFluids.TSUNAMI, 0x3f76e4, Material.WATER, MapColor.WATER);
